@@ -20,6 +20,7 @@ parser.add_argument('--save', action='store_true')
 parser.add_argument('--full', action='store_true')
 parser.add_argument('--show_traj', action='store_true')
 parser.add_argument('--once', action='store_true')
+parser.add_argument('--use_cpu', action='store_true')
 
 policy_args = parser.parse_args()
 
@@ -29,13 +30,15 @@ args_path = model_base_path + '/' + policy_args.arg_name
 
 # args from train
 r = open(args_path, 'rb')
-args = pickle.load(r) 
+args = pickle.load(r)
+if policy_args.use_cpu:
+    args.use_gpu = False
 
 if policy_args.policy_type == 'drl':
     # fname_model = save_path_string +'_check_point_250.pt'
     fname_model = model_base_path + '/' + policy_args.model_name
     policy_name = 'rl_rvo'
-    
+
 env = gym.make('mrnav-v1', world_name=policy_args.world_name, robot_number=policy_args.robot_number, neighbors_region=args.neighbors_region, neighbors_num=args.neighbors_num, robot_init_mode=policy_args.dis_mode, env_train=False, random_bear=args.random_bear, random_radius=args.random_radius, reward_parameter=args.reward_parameter, goal_threshold=0.2, full=policy_args.full)
 
 policy_name = policy_name + '_' + str(policy_args.robot_number) + '_dis' + str(policy_args.dis_mode)

@@ -123,8 +123,10 @@ class post_train:
 
         if policy_dict == True:
             model = rnn_ac(self.env.observation_space, self.env.action_space, self.args.state_dim, self.args.rnn_input_dim, self.args.rnn_hidden_dim, self.args.hidden_sizes_ac, self.args.hidden_sizes_v, self.args.activation, self.args.output_activation, self.args.output_activation_v, self.args.use_gpu, self.args.rnn_mode)
-        
-            check_point = torch.load(filename)
+            if not self.args.use_gpu:
+                check_point = torch.load(filename, map_location=torch.device('cpu'))
+            else:
+                check_point = torch.load(filename)
             model.load_state_dict(check_point['model_state'], strict=True)
             model.eval()
 

@@ -35,8 +35,10 @@ class rnn_ac(nn.Module):
         super().__init__()
 
         self.use_gpu = use_gpu
-        torch.cuda.synchronize()
-        
+
+        if self.use_gpu:
+            torch.cuda.synchronize()
+
         if rnn_mode == 'biGRU':
             obs_dim = (rnn_hidden_dim + state_dim)
         elif rnn_mode == 'GRU' or 'LSTM':
@@ -247,4 +249,4 @@ class Critic(nn.Module):
                 obs = self.rnn_reader.obs_rnn(obs)
         v = torch.squeeze(self.v_net(obs), -1)
 
-        return v 
+        return v
