@@ -172,13 +172,13 @@ class multi_ppo:
 
             for t in range(self.steps_per_epoch):
 
+                a_list, v_list, logp_list, abs_action_list = [], [], [], []
+
                 if self.render and (epoch % self.render_freq == 0 or epoch == self.epoch):
-                    self.env.render(save=self.save_figure, path=self.figure_save_path, i = t )
+                    self.env.render(abs_action_list,a_list,save=self.save_figure, path=self.figure_save_path, i = t )
 
                 # if self.save_figure and epoch == 1:
                 #     self.env.render(save=True, path=self.save_path+'figure/', i=t)
-
-                a_list, v_list, logp_list, abs_action_list = [], [], [], []
             
                 for i in range(self.robot_num):
                     obs = obs_list[i]
