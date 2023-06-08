@@ -4,3 +4,4 @@ policy_name: rl_rvo_6_dis3  successful rate: 100.00% average EpLen: 83.3 std len
 policy_name: rl_rvo_10_dis3_episodes50_radius0.34  successful rate: 90.00% average EpLen: 101.87 std length 10.83 average speed: 0.91 std speed 0.07
 policy_name: rl_rvo_10_dis3_episodes10_radius0.34  successful rate: 100.00% average EpLen: 94.0 std length 0.0 average speed: 0.96 std speed 0.0
 policy_name: rl_rvo_10_dis3_episodes10_radius0.5  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.85 std speed 0.0
+policy_name: rl_rvo_10_dis3_episodes10_radius0.4  successful rate: 100.00% average EpLen: 99.0 std length 0.0 average speed: 0.92 std speed 0.0
