@@ -33,5 +33,3 @@ python run_rvo_agent.py  --experiment 1 --trial 1 --nav 1 --trial_nav 1 --vmax_l
 Their command:
 python policy_test_pre_train.py --render --use_cpu --experiment 1 --trial 1 --vmax_linear 0.5 --vmax_angular 0.5  --show_traj --robot_number 2
 
-
-
