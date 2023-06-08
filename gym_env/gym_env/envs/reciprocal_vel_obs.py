@@ -6,6 +6,8 @@ from time import time
 # obstacle_state_list: [[x, y, radius]]
 # rvo_vel: [vx, vy]
 
+
+#We change vmax and vmin from 1.5 to 0.5
 class reciprocal_vel_obs:
 
     def __init__(self, neighbor_region=5, vxmax = 1.5, vymax = 1.5, acceler = 0.5):
@@ -48,10 +50,12 @@ class reciprocal_vel_obs:
         
         x, y, vx, vy, r = state[0:5]
         mx, my, mvx, mvy, mr = circular[0:5]
+        #print('x:{0}  y:{1}  vx:{2}  vy:{3}  r:{4}'.format(x,y,vx,vy,r))
+        #print('mx:{0}  my:{1}  mvx:{2}  mvy:{3}  mr:{4}'.format(mx,my,mvx,mvy,mr))
 
         dis_mr = sqrt((my - y)**2 + (mx - x)**2)
         angle_mr = atan2(my - y, mx - x)
-        
+
         if dis_mr < r + mr:
            dis_mr = r + mr
         
@@ -90,8 +94,11 @@ class reciprocal_vel_obs:
             if reciprocal_vel_obs.cross_product(cl_vector, cur_v) <= 0: 
                 apex = [ rvo_apex[0] - dis_diff * cos(line_right_ori), rvo_apex[1] - dis_diff * sin(line_right_ori) ]          
             else:
-                apex = [ vo_apex[0] + dis_diff * cos(line_right_ori), vo_apex[1] + dis_diff * sin(line_right_ori) ]       
-        
+                apex = [ vo_apex[0] + dis_diff * cos(line_right_ori), vo_apex[1] + dis_diff * sin(line_right_ori) ] 
+            
+        observation_vo = [apex[0], apex[1], cos(line_left_ori), sin(line_left_ori), cos(line_right_ori), sin(line_right_ori)]      
+        print('apex:{0}  left_ray:{1}   right_ray:{2}   dis:{3}   tc:{4}'.format(np.round(observation_vo[:2],2), np.round(observation_vo[2:4],2), 
+            np.round(observation_vo[4:6],2)))
         return apex+[line_left_ori, line_right_ori]  
 
     def config_vo_line(self, robot_state, line):

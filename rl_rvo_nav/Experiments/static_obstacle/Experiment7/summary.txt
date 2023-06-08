@@ -1,0 +1,53 @@
+vmax_linear = 1.5
+vmax_angular = 1.5
+frequency = 10Hz
+step_time = 0.1
+We run our configuration and plot the position for them and us
+We inkoque the model, we do not copy the actions
+
+Initial position: [0,0,0]
+Goal: [8,0]
+
+world:
+  world_height: 10
+  world_width: 15
+  offset_x: -5
+  offset_y: -5
+  step_time: 0.1
+
+robots:
+  robot_mode: 'diff'  # omni or diff
+  radius_list: [0.2, 0.2]  # first one is the default radius under other init_mode
+  vel_max: [1.5, 1.5]
+  radius_exp: 0.2
+  interval: 1 
+  square: [0, 0, 9, 9]
+  circular: [5, 5, 4]
+
+# obs_lines:
+#   number: 2
+
+obs_cirs:
+  number: 1
+  dist_mode: 0 #2,0
+  obs_model: 'static' # static, dynamic 
+  obs_step_mode: 'wander' # default, wander
+  #obs_state_list: [[25, 34], [35, 26]]
+  obs_state_list: [[4, 0]]
+  #obs_goal_list: [[45, 24], [15, 36]]
+  obs_goal_list: [[0, 0]]
+  #obs_radius_list: [0.1, 0.1]
+  obs_radius_list: [0.2, 0.2]
+  obs_square: [2, 2, 8, 8]
+  obs_interval: 1
+  random_radius: False
+  vel_max: [0.3, 0.3]
+
+Our parameters:
+python run_rvo_agent.py  --experiment 7 --trial 1 --nav 7 --trial_nav 1 --vmax_linear 1.5 --vmax_angular 1.5  --load_new --plot_traj
+
+Their command:
+python policy_test_pre_train.py --render --use_cpu --experiment 7 --trial 1 --vmax_linear 1.5 --vmax_angular 1.5  --show_traj
+
+
+

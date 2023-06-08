@@ -2,6 +2,8 @@ from gym_env.envs.reciprocal_vel_obs import reciprocal_vel_obs
 from math import sqrt, atan2, asin, sin, pi, cos, inf
 import numpy as np
 
+#We change vmax and vmin from 1.5 to 0.5
+
 class rvo_inter(reciprocal_vel_obs):
     def __init__(self, neighbor_region=5, neighbor_num=10, vxmax=1.5, vymax=1.5, acceler=0.5, env_train=True, exp_radius=0.2, ctime_threshold=5, ctime_line_threshold=1):
         super(rvo_inter, self).__init__(neighbor_region, vxmax, vymax, acceler)
@@ -14,10 +16,15 @@ class rvo_inter(reciprocal_vel_obs):
 
     def config_vo_inf(self, robot_state, nei_state_list, obs_cir_list, obs_line_list, action=np.zeros((2,)), **kwargs):
         # mode: vo, rvo, hrvo
+        #print('robot_state:{0}'.format(robot_state))
+        #print('nei_state_list:{0}'.format(nei_state_list))
+        #print('obs_cir_list:{0}'.format(obs_cir_list))
+        #print('obs_line_list:{0}'.format(obs_line_list))
         robot_state, ns_list, oc_list, ol_list = self.preprocess(robot_state, nei_state_list, obs_cir_list, obs_line_list)
 
         action = np.squeeze(action)
-
+        #print('robot_state:{0}'.format(robot_state))
+        #print('nei_state_list by config_inf:{0}'.format(nei_state_list))
         vo_list1 = list(map(lambda x: self.config_vo_circle2(robot_state, x, action, 'rvo', **kwargs), ns_list))
         vo_list2 = list(map(lambda y: self.config_vo_circle2(robot_state, y,action, 'vo', **kwargs), oc_list))
         vo_list3 = list(map(lambda z: self.config_vo_line2(robot_state, z, action, **kwargs), ol_list))
@@ -53,7 +60,7 @@ class rvo_inter(reciprocal_vel_obs):
     def config_vo_reward(self, robot_state, nei_state_list, obs_cir_list, obs_line_list, action=np.zeros((2,)), **kwargs):
 
         robot_state, ns_list, oc_list, ol_list = self.preprocess(robot_state, nei_state_list, obs_cir_list, obs_line_list)
-
+        #print('nei_state_list by config_reward:{0}'.format(nei_state_list))
         vo_list1 = list(map(lambda x: self.config_vo_circle2(robot_state, x, action, 'rvo', **kwargs), ns_list))
         vo_list2 = list(map(lambda y: self.config_vo_circle2(robot_state, y,action, 'vo', **kwargs), oc_list))
         vo_list3 = list(map(lambda z: self.config_vo_line2(robot_state, z, action, **kwargs), ol_list))
@@ -84,9 +91,11 @@ class rvo_inter(reciprocal_vel_obs):
         return vo_list
 
     def config_vo_circle2(self, state, circular, action, mode='rvo', **kwargs):
-        
         x, y, vx, vy, r = state[0:5]
         mx, my, mvx, mvy, mr = circular[0:5]
+        #print('x:{0}  y:{1}  vx:{2}  vy:{3}  r:{4}'.format(x,y,vx,vy,r))
+        #print('mx:{0}  my:{1}  mvx:{2}  mvy:{3}  mr:{4}'.format(mx,my,mvx,mvy,mr))
+        #print('action:{0}'.format(action))
 
         if mvx == 0 and mvy == 0:
             mode = 'vo'
@@ -99,6 +108,7 @@ class rvo_inter(reciprocal_vel_obs):
 
         dis_mr = sqrt((rel_y)**2 + (rel_x)**2)
         angle_mr = atan2(my - y, mx - x)
+        #print('angle_mr:{0}   dis_mr:{1}'.format(angle_mr,dis_mr))
 
         real_dis_mr = sqrt((rel_y)**2 + (rel_x)**2)
         
@@ -119,6 +129,7 @@ class rvo_inter(reciprocal_vel_obs):
         half_angle = asin( ratio ) 
         line_left_ori = reciprocal_vel_obs.wraptopi(angle_mr + half_angle) 
         line_right_ori = reciprocal_vel_obs.wraptopi(angle_mr - half_angle) 
+        #print('left_ori:{0}   right_ori:{1}',format(line_left_ori,line_right_ori))
 
         if mode == 'vo':
             vo = [mvx, mvy, line_left_ori, line_right_ori]
@@ -147,6 +158,8 @@ class rvo_inter(reciprocal_vel_obs):
         min_dis = real_dis_mr-mr
 
         observation_vo = [vo[0], vo[1], cos(vo[2]), sin(vo[2]), cos(vo[3]), sin(vo[3]), min_dis, input_exp_time]
+        #print('apex:{0}  left_ray:{1}   right_ray:{2}   dis:{3}   tc:{4}'.format(np.round(observation_vo[:2],2), np.round(observation_vo[2:4],2), 
+        #      np.round(observation_vo[4:6],2), np.round(observation_vo[6],2), np.round(observation_vo[7],2)))
         
         return [observation_vo, vo_flag, exp_time, collision_flag, min_dis]
 

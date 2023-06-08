@@ -4,9 +4,11 @@ from gym import spaces
 from gym_env.envs.rvo_inter import rvo_inter
 import numpy as np
 
+#We change vmax and vmin from 1.5 to 0.5
+
 class ir_gym(env_base):
-    def __init__(self, world_name, neighbors_region=5, neighbors_num=10, vxmax = 1.5, vymax = 1.5, env_train=True, acceler = 0.5, **kwargs):
-        super(ir_gym, self).__init__(world_name=world_name, **kwargs)
+    def __init__(self, abs_action,a_inc, world_name, neighbors_region=5, neighbors_num=10, vxmax = 1.5, vymax = 1.5, env_train=True, acceler = 0.5, **kwargs):
+        super(ir_gym, self).__init__(abs_action,a_inc,world_name=world_name, **kwargs)
 
         # self.obs_mode = kwargs.get('obs_mode', 0)    # 0 drl_rvo, 1 drl_nrvo
         # self.reward_mode = kwargs.get('reward_mode', 0)
@@ -32,20 +34,21 @@ class ir_gym(env_base):
 
     def cal_des_omni_list(self):
         des_vel_list = [robot.cal_des_vel_omni() for robot in self.robot_list]
+        #print('\n des_vel_list: {0}'.format(des_vel_list))
+        #print('\n robot_list:{0}'.format(self.robot_list))
         return des_vel_list
 
 
     def rvo_reward_list_cal(self, action_list, **kwargs):    
         ts = self.components['robots'].total_states() # robot_state_list, nei_state_list, obs_circular_list, obs_line_list
-
+        #print('ts:{0}'.format(ts))
         rvo_reward_list = list(map(lambda robot_state, action: self.rvo_reward_cal(robot_state, ts[1], ts[2], ts[3], action, self.reward_parameter, **kwargs), ts[0], action_list))
-
         return rvo_reward_list
     
     def rvo_reward_cal(self, robot_state, nei_state_list, obs_cir_list, obs_line_list, action, reward_parameter=(0.2, 0.1, 0.1, 0.2, 0.2, 1, -10, 20), **kwargs):
         
         vo_flag, min_exp_time, min_dis = self.rvo.config_vo_reward(robot_state, nei_state_list, obs_cir_list, obs_line_list, action, **kwargs)
-
+        #print('\n vo_flag:{1}   min_exp_time:{1}   min_dis:{2}'.format(vo_flag, min_exp_time, min_dis))
         des_vel = np.round(np.squeeze(robot_state[-2:]), 2)
         
         p1, p2, p3, p4, p5, p6, p7, p8 = reward_parameter
@@ -70,7 +73,6 @@ class ir_gym(env_base):
 
     def obs_move_reward_list(self, action_list, **kwargs):
         ts = self.components['robots'].total_states() # robot_state_list, nei_state_list, obs_circular_list, obs_line_list
-
         obs_reward_list = list(map(lambda robot, action: self.observation_reward(robot, ts[1], ts[2], ts[3], action, **kwargs), self.robot_list, action_list))
 
         obs_list = [l[0] for l in obs_reward_list]
@@ -81,8 +83,9 @@ class ir_gym(env_base):
         return obs_list, reward_list, done_list, info_list
 
     def observation_reward(self, robot, nei_state_list, obs_circular_list, obs_line_list, action, **kwargs):
-
+        
         robot_omni_state = robot.omni_state()
+        #print('robot_omni_state:{0}'.format(robot_omni_state))
         des_vel = np.squeeze(robot.cal_des_vel_omni())
        
         done = False
@@ -96,6 +99,7 @@ class ir_gym(env_base):
         obs_vo_list, vo_flag, min_exp_time, collision_flag = self.rvo.config_vo_inf(robot_omni_state, nei_state_list, obs_circular_list, obs_line_list, action, **kwargs)
 
         radian = robot.state[2]
+        #print('radian:{0}'.format(radian))
         cur_vel = np.squeeze(robot.vel_omni)
         radius = robot.radius_collision* np.ones(1,)
 
@@ -149,7 +153,6 @@ class ir_gym(env_base):
         return 0
 
     def observation(self, robot, nei_state_list, obs_circular_list, obs_line_list):
-
         robot_omni_state = robot.omni_state()
         des_vel = np.squeeze(robot_omni_state[-2:])
         

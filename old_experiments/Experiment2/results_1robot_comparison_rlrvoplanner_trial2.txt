@@ -1,0 +1,54 @@
+Starting simulation 
+curr_vel: [0. 0.]   des_vel:  [1.5 0. ]    ori_goal: 0.0   radius: 0.4   robot_pose: [0. 0.]   robot_ori: 0.0   action: [1.   0.18]    time_action 0.00260162353515625    step_time 0.1
+curr_vel: [1.   0.09]   des_vel:  [ 1.5 -0. ]    ori_goal: -0.0   radius: 0.4   robot_pose: [0.1 0. ]   robot_ori: 0.09   action: [ 0.99 -0.6 ]    time_action 0.0014171600341796875    step_time 0.1
+curr_vel: [ 1.36 -0.16]   des_vel:  [ 1.5 -0. ]    ori_goal: -0.0   radius: 0.4   robot_pose: [0.24 0.  ]   robot_ori: -0.12   action: [0.82 0.04]    time_action 0.004952192306518555    step_time 0.1
+curr_vel: [ 1.49 -0.18]   des_vel:  [1.5 0. ]    ori_goal: 0.0   radius: 0.4   robot_pose: [ 0.39 -0.02]   robot_ori: -0.12   action: [0.6  0.04]    time_action 0.001697540283203125    step_time 0.1
+curr_vel: [ 1.49 -0.18]   des_vel:  [1.5  0.01]    ori_goal: 0.0   radius: 0.4   robot_pose: [ 0.53 -0.03]   robot_ori: -0.12   action: [0.6  0.07]    time_action 0.0017135143280029297    step_time 0.1
+curr_vel: [ 1.49 -0.18]   des_vel:  [1.5  0.01]    ori_goal: 0.01   radius: 0.4   robot_pose: [ 0.68 -0.05]   robot_ori: -0.12   action: [0.6  0.07]    time_action 0.0016286373138427734    step_time 0.1
+curr_vel: [ 1.49 -0.18]   des_vel:  [1.5  0.01]    ori_goal: 0.01   radius: 0.4   robot_pose: [ 0.83 -0.07]   robot_ori: -0.12   action: [0.6  0.07]    time_action 0.001354217529296875    step_time 0.1
+curr_vel: [ 1.49 -0.18]   des_vel:  [1.5  0.02]    ori_goal: 0.01   radius: 0.4   robot_pose: [ 0.98 -0.09]   robot_ori: -0.12   action: [0.6  0.11]    time_action 0.005034685134887695    step_time 0.1
+curr_vel: [ 1.49 -0.18]   des_vel:  [1.5  0.02]    ori_goal: 0.02   radius: 0.4   robot_pose: [ 1.13 -0.11]   robot_ori: -0.12   action: [0.6  0.11]    time_action 0.0014324188232421875    step_time 0.1
+curr_vel: [ 1.49 -0.18]   des_vel:  [1.5  0.03]    ori_goal: 0.02   radius: 0.4   robot_pose: [ 1.28 -0.12]   robot_ori: -0.12   action: [0.59 0.14]    time_action 0.0013949871063232422    step_time 0.1
+curr_vel: [ 1.48 -0.18]   des_vel:  [1.5  0.03]    ori_goal: 0.02   radius: 0.4   robot_pose: [ 1.43 -0.14]   robot_ori: -0.12   action: [0.62 0.14]    time_action 0.0014832019805908203    step_time 0.1
+curr_vel: [ 1.48 -0.18]   des_vel:  [1.5  0.04]    ori_goal: 0.02   radius: 0.4   robot_pose: [ 1.57 -0.16]   robot_ori: -0.12   action: [0.61 0.18]    time_action 0.0014483928680419922    step_time 0.1
+curr_vel: [ 1.49 -0.09]   des_vel:  [1.5  0.04]    ori_goal: 0.03   radius: 0.4   robot_pose: [ 1.72 -0.17]   robot_ori: -0.06   action: [ 0.61 -0.12]    time_action 0.001979827880859375    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.04]    ori_goal: 0.03   radius: 0.4   robot_pose: [ 1.87 -0.18]   robot_ori: -0.06   action: [ 0.59 -0.13]    time_action 0.0014569759368896484    step_time 0.1
+curr_vel: [ 1.49 -0.09]   des_vel:  [1.5  0.05]    ori_goal: 0.03   radius: 0.4   robot_pose: [ 2.02 -0.19]   robot_ori: -0.06   action: [ 0.61 -0.09]    time_action 0.001495361328125    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.05]    ori_goal: 0.03   radius: 0.4   robot_pose: [ 2.17 -0.2 ]   robot_ori: -0.06   action: [ 0.59 -0.09]    time_action 0.0019223690032958984    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.05]    ori_goal: 0.04   radius: 0.4   robot_pose: [ 2.32 -0.21]   robot_ori: -0.06   action: [ 0.59 -0.09]    time_action 0.001489400863647461    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.06]    ori_goal: 0.04   radius: 0.4   robot_pose: [ 2.47 -0.22]   robot_ori: -0.06   action: [ 0.58 -0.06]    time_action 0.0014603137969970703    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.06]    ori_goal: 0.04   radius: 0.4   robot_pose: [ 2.62 -0.23]   robot_ori: -0.06   action: [ 0.58 -0.06]    time_action 0.0014450550079345703    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.07]    ori_goal: 0.04   radius: 0.4   robot_pose: [ 2.77 -0.23]   robot_ori: -0.06   action: [ 0.58 -0.03]    time_action 0.0015079975128173828    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.07]    ori_goal: 0.05   radius: 0.4   robot_pose: [ 2.92 -0.24]   robot_ori: -0.06   action: [ 0.58 -0.03]    time_action 0.0016193389892578125    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.08]    ori_goal: 0.05   radius: 0.4   robot_pose: [ 3.07 -0.25]   robot_ori: -0.06   action: [0.58 0.  ]    time_action 0.0014750957489013672    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.08]    ori_goal: 0.05   radius: 0.4   robot_pose: [ 3.22 -0.26]   robot_ori: -0.06   action: [0.58 0.  ]    time_action 0.0014772415161132812    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.09]    ori_goal: 0.06   radius: 0.4   robot_pose: [ 3.37 -0.27]   robot_ori: -0.06   action: [0.58 0.04]    time_action 0.0017240047454833984    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.09]    ori_goal: 0.06   radius: 0.4   robot_pose: [ 3.52 -0.28]   robot_ori: -0.06   action: [0.58 0.04]    time_action 0.001581430435180664    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5 0.1]    ori_goal: 0.07   radius: 0.4   robot_pose: [ 3.67 -0.29]   robot_ori: -0.06   action: [0.57 0.07]    time_action 0.0013816356658935547    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.11]    ori_goal: 0.07   radius: 0.4   robot_pose: [ 3.82 -0.3 ]   robot_ori: -0.06   action: [0.57 0.1 ]    time_action 0.0017061233520507812    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.11]    ori_goal: 0.08   radius: 0.4   robot_pose: [ 3.97 -0.3 ]   robot_ori: -0.06   action: [0.57 0.1 ]    time_action 0.0013210773468017578    step_time 0.1
+curr_vel: [ 1.5  -0.09]   des_vel:  [1.5  0.12]    ori_goal: 0.08   radius: 0.4   robot_pose: [ 4.12 -0.31]   robot_ori: -0.06   action: [0.57 0.14]    time_action 0.0016982555389404297    step_time 0.1
+curr_vel: [ 1.49 -0.09]   des_vel:  [1.49 0.13]    ori_goal: 0.09   radius: 0.4   robot_pose: [ 4.27 -0.32]   robot_ori: -0.06   action: [0.57 0.18]    time_action 0.001611948013305664    step_time 0.1
+curr_vel: [1.49 0.  ]   des_vel:  [1.49 0.14]    ori_goal: 0.09   radius: 0.4   robot_pose: [ 4.42 -0.33]   robot_ori: 0.0   action: [ 0.58 -0.08]    time_action 0.0016257762908935547    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.14]    ori_goal: 0.09   radius: 0.4   robot_pose: [ 4.57 -0.33]   robot_ori: 0.0   action: [ 0.56 -0.09]    time_action 0.0016853809356689453    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.15]    ori_goal: 0.1   radius: 0.4   robot_pose: [ 4.72 -0.33]   robot_ori: 0.0   action: [ 0.56 -0.05]    time_action 0.0016179084777832031    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.16]    ori_goal: 0.1   radius: 0.4   robot_pose: [ 4.87 -0.33]   robot_ori: 0.0   action: [ 0.56 -0.02]    time_action 0.0017518997192382812    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.16]    ori_goal: 0.11   radius: 0.4   robot_pose: [ 5.02 -0.33]   robot_ori: 0.0   action: [ 0.56 -0.02]    time_action 0.0016374588012695312    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.17]    ori_goal: 0.11   radius: 0.4   robot_pose: [ 5.17 -0.33]   robot_ori: 0.0   action: [0.55 0.02]    time_action 0.0019578933715820312    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.18]    ori_goal: 0.12   radius: 0.4   robot_pose: [ 5.32 -0.33]   robot_ori: 0.0   action: [0.55 0.05]    time_action 0.0015883445739746094    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.19]    ori_goal: 0.13   radius: 0.4   robot_pose: [ 5.47 -0.33]   robot_ori: 0.0   action: [0.55 0.09]    time_action 0.0016100406646728516    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.49 0.2 ]    ori_goal: 0.14   radius: 0.4   robot_pose: [ 5.62 -0.33]   robot_ori: 0.0   action: [0.55 0.12]    time_action 0.0020987987518310547    step_time 0.1
+curr_vel: [1.5 0. ]   des_vel:  [1.48 0.22]    ori_goal: 0.14   radius: 0.4   robot_pose: [ 5.77 -0.33]   robot_ori: 0.0   action: [0.52 0.19]    time_action 0.001706838607788086    step_time 0.1
+curr_vel: [1.49 0.1 ]   des_vel:  [1.48 0.23]    ori_goal: 0.15   radius: 0.4   robot_pose: [ 5.91 -0.32]   robot_ori: 0.06   action: [ 0.56 -0.09]    time_action 0.001470327377319336    step_time 0.1
+curr_vel: [1.5 0.1]   des_vel:  [1.48 0.24]    ori_goal: 0.16   radius: 0.4   robot_pose: [ 6.06 -0.31]   robot_ori: 0.06   action: [ 0.54 -0.06]    time_action 0.0016741752624511719    step_time 0.1
+curr_vel: [1.5 0.1]   des_vel:  [1.48 0.25]    ori_goal: 0.17   radius: 0.4   robot_pose: [ 6.21 -0.3 ]   robot_ori: 0.06   action: [ 0.54 -0.02]    time_action 0.0015490055084228516    step_time 0.1
+curr_vel: [1.5 0.1]   des_vel:  [1.48 0.26]    ori_goal: 0.18   radius: 0.4   robot_pose: [ 6.36 -0.29]   robot_ori: 0.06   action: [0.53 0.01]    time_action 0.0020859241485595703    step_time 0.1
+curr_vel: [1.5 0.1]   des_vel:  [1.47 0.28]    ori_goal: 0.19   radius: 0.4   robot_pose: [ 6.51 -0.28]   robot_ori: 0.06   action: [0.51 0.08]    time_action 0.0019774436950683594    step_time 0.1
+curr_vel: [1.5 0.1]   des_vel:  [1.47 0.3 ]    ori_goal: 0.2   radius: 0.4   robot_pose: [ 6.66 -0.27]   robot_ori: 0.06   action: [0.51 0.15]    time_action 0.0015163421630859375    step_time 0.1
+curr_vel: [1.49 0.1 ]   des_vel:  [1.46 0.32]    ori_goal: 0.22   radius: 0.4   robot_pose: [ 6.81 -0.26]   robot_ori: 0.06   action: [0.51 0.23]    time_action 0.0014696121215820312    step_time 0.1
+curr_vel: [1.47 0.21]   des_vel:  [1.46 0.35]    ori_goal: 0.23   radius: 0.4   robot_pose: [ 6.96 -0.25]   robot_ori: 0.14   action: [ 0.57 -0.02]    time_action 0.0014531612396240234    step_time 0.1
+curr_vel: [1.49 0.21]   des_vel:  [1.45 0.37]    ori_goal: 0.25   radius: 0.4   robot_pose: [ 7.11 -0.23]   robot_ori: 0.14   action: [0.5  0.05]    time_action 0.0015044212341308594    step_time 0.1
+curr_vel: [1.49 0.21]   des_vel:  [1.45 0.4 ]    ori_goal: 0.27   radius: 0.4   robot_pose: [ 7.26 -0.21]   robot_ori: 0.14   action: [0.49 0.15]    time_action 0.0014295578002929688    step_time 0.1
+curr_vel: [1.48 0.21]   des_vel:  [1.43 0.45]    ori_goal: 0.3   radius: 0.4   robot_pose: [ 7.4  -0.19]   robot_ori: 0.14   action: [0.46 0.32]    time_action 0.0014755725860595703    step_time 0.1
+curr_vel: [1.43 0.35]   des_vel:  [1.42 0.5 ]    ori_goal: 0.34   radius: 0.4   robot_pose: [ 7.55 -0.16]   robot_ori: 0.24   action: [0.57 0.08]    time_action 0.0014331340789794922    step_time 0.1
+curr_vel: [1.46 0.35]   des_vel:  [1.39 0.56]    ori_goal: 0.38   radius: 0.4   robot_pose: [ 7.69 -0.12]   robot_ori: 0.24   action: [0.42 0.27]    time_action 0.001580953598022461    step_time 0.1

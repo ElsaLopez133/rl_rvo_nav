@@ -5,9 +5,10 @@ import platform
 from rl_rvo_nav.policy.policy_rnn_ac import rnn_ac
 from math import pi, sin, cos, sqrt
 import time 
+import pandas as pd
 
 class post_train:
-    def __init__(self, env, num_episodes=100, max_ep_len=150, acceler_vel = 1.0, reset_mode=3, render=True, save=False, neighbor_region=4, neighbor_num=5, args=None, **kwargs):
+    def __init__(self, env, num_episodes=100, max_ep_len=150, acceler_vel = 1.0, reset_mode=3, render=True, save=True, neighbor_region=4, neighbor_num=5, args=None, **kwargs):
 
         self.env = env
         self.num_episodes=num_episodes
@@ -22,7 +23,7 @@ class post_train:
         self.inf_print = kwargs.get('inf_print', True)
         self.std_factor = kwargs.get('std_factor', 0.001)
         # self.show_traj = kwargs.get('show_traj', False)
-        self.show_traj = False
+        self.show_traj = True
         self.traj_type = ''
         self.figure_format = kwargs.get('figure_format', 'png')
 
@@ -30,43 +31,78 @@ class post_train:
         self.nm = neighbor_num
         self.args = args
 
-    def policy_test(self, policy_type='drl', policy_path=None, policy_name='policy', result_path=None, result_name='/result.txt', figure_save_path=None, ani_save_path=None, policy_dict=False, once=False):
+    def policy_test(self, policy_type='drl', policy_path=None, policy_name='policy', result_path=None, result_name='/result.txt', figure_save_path=None, ani_save_path=None, policy_dict=False, once=False, experiment = 1 , trial = 1, vmax_linear = 1.5, vmax_angular = 1.5, step = 0.1):
         
         if policy_type == 'drl':
             model_action = self.load_policy(policy_path, self.std_factor, policy_dict=policy_dict)
 
         o, r, d, ep_ret, ep_len, n = self.env.reset(mode=self.reset_mode), 0, False, 0, 0, 0
+        #print('o:{0}'.format(o))
+        info = False
         ep_ret_list, speed_list, mean_speed_list, ep_len_list, sn = [], [], [], [], 0
-
+        number_actions = 0
+        total_time = 0
+        
         print('Policy Test Start !')
+        file_name = ('/home/rosfr/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/two_robots_exchange_position/Experiment',str(experiment),'/step_',str(step).replace(".","-"),'_vmax_linear',str(vmax_linear).replace(".","-"),'_vmax_angular',str(vmax_angular).replace(".","-"),'_trial',str(trial),'.txt')
+        file_name_txt = "".join(file_name)
+        file_name_csv = file_name_txt.replace(file_name_txt[len(file_name_txt) - 3:], 'csv')
 
+        # We create a data frame to store the values
+        df= pd.DataFrame(columns = ['robot_id','action_x','action_y','a_inc_x', 'a_inc_y','cur_vel_x', 'cur_vel_y', 'des_vel_x', 'des_vel_y', 'ori_goal', 'raidus', 'robot_pose_x', 'robot_pose_y', 'robot_ori','time_action','time_step'])
+    
         figure_id = 0
+        self.num_episodes = 1
+
+        abs_action = np.array([[0],[0]])
+        a_inc = np.array([[0],[0]])
+        
         while n < self.num_episodes:
 
-            # if n == 1:
-            #     self.show_traj = True
+            #if n == 1:
+            #    self.show_traj = True
 
             action_time_list = []
+            abs_action_list =[]
+            a_inc_list =[]
 
             if self.render or self.save:
-                self.env.render(save=self.save, path=figure_save_path, i = figure_id, show_traj=self.show_traj, traj_type=self.traj_type)
+                self.env.render(abs_action_list,a_inc_list, save=self.save, path=figure_save_path, i = figure_id, show_traj=self.show_traj, traj_type=self.traj_type)
             
             if policy_type == 'drl': 
                 abs_action_list =[]
+                a_inc_list =[]
                 for i in range(self.robot_number):
-
                     start_time = time.time()
                     a_inc = np.round(model_action(o[i]), 2)
+                    #a_inc_x = float(input("action x: "))
+                    #a_inc_y = float(input("action y: "))
+                    #a_inc = np.array([a_inc_x, a_inc_y])
                     end_time = time.time()
 
                     temp = end_time - start_time
                     action_time_list.append(temp)
+                    total_time = total_time + temp
+                    number_actions += 1
 
                     cur_vel = self.env.ir_gym.robot_list[i].vel_omni
                     abs_action = self.acceler_vel * a_inc + np.squeeze(cur_vel)
                     abs_action_list.append(abs_action)
+                    a_inc_list.append(a_inc)
+                    print('abs_action:{0}'.format(abs_action))
+                    
+                    row = [i,abs_action[0],abs_action[1],a_inc[0], a_inc[1],o[i][0],o[i][1],o[i][2],o[i][3],np.round(self.env.ir_gym.robot_list[i].radian_goal,2),o[i][5],np.round(np.squeeze(self.env.ir_gym.robot_list[i].state[0]),2),
+                          np.round(np.squeeze(self.env.ir_gym.robot_list[i].state[1]),2),np.round(np.squeeze(self.env.ir_gym.robot_list[i].state[2]),2),temp,self.step_time]
+                    df.loc[len(df)] = row
 
+                    df.to_csv(file_name_csv, index=False)
+
+            print('BEFORE STEP')
+            print('a_inc:{0}  abs_action:{1}  cur_vel:{2} '.format(a_inc, abs_action, np.squeeze(cur_vel)))
             o, r, d, info = self.env.step_ir(abs_action_list, vel_type = 'omni')
+            print('AFTER STEP')
+            cur_vel = self.env.ir_gym.robot_list[i].vel_omni
+            print('a_inc:{0}  abs_action:{1}  cur_vel:{2} '.format(a_inc, abs_action, np.squeeze(cur_vel)))
 
             robot_speed_list = [np.linalg.norm(robot.vel_omni) for robot in self.env.ir_gym.robot_list]
             avg_speed = np.average(robot_speed_list)
@@ -75,8 +111,9 @@ class post_train:
             ep_ret += r[0]
             ep_len += 1
             figure_id += 1
-
+            
             if np.max(d) or (ep_len == self.max_ep_len) or np.min(info):
+                #df.to_csv(file_name_csv, index=False)
                 speed = np.mean(speed_list)
                 figure_id = 0
                 if np.min(info):
@@ -102,9 +139,9 @@ class post_train:
                         self.env.ir_gym.world_plot.save_gif_figure(figure_save_path, 0, format='eps')
                         break
                         
-                    if self.save:
-                        self.env.ir_gym.save_ani(figure_save_path, ani_save_path, ani_name=policy_name)
-                        break
+                    #if self.save:
+                    #    self.env.ir_gym.save_ani(figure_save_path, ani_save_path, ani_name=policy_name)
+                    #    break
 
         mean_len = 0 if len(ep_len_list) == 0 else np.round(np.mean(ep_len_list), 2)
         std_len = 0 if len(ep_len_list) == 0 else np.round(np.std(ep_len_list), 2)

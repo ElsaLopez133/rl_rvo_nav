@@ -2,9 +2,9 @@ import gym
 from gym_env.envs.ir_gym import ir_gym
 
 class mrnav(gym.Env):
-    def __init__(self, world_name=None, neighbors_region=5, neighbors_num=10, **kwargs):
+    def __init__(self, abs_action_list,a_inc_list, world_name=None, neighbors_region=5, neighbors_num=10, **kwargs):
         
-        self.ir_gym = ir_gym(world_name, neighbors_region, neighbors_num, **kwargs)
+        self.ir_gym = ir_gym(abs_action_list,a_inc_list, world_name, neighbors_region, neighbors_num, **kwargs)
         
         self.observation_space = self.ir_gym.observation_space
         self.action_space = self.ir_gym.action_space
@@ -29,8 +29,8 @@ class mrnav(gym.Env):
         
         return obs_list, reward_list, done_list, info_list
 
-    def render(self, mode = 'human', save=False, path=None, i = 0, **kwargs):
-        self.ir_gym.render(0.01, **kwargs)
+    def render(self, abs_action_list,a_inc_list, mode = 'human', save=False, path=None, i = 0, **kwargs):
+        self.ir_gym.render(abs_action_list,a_inc_list,0.01, **kwargs)
 
         if save:
             self.ir_gym.save_fig(path, i) 

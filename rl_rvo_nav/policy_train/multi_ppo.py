@@ -145,7 +145,8 @@ class multi_ppo:
         self.save_result = save_result
         self.counter = counter
         self.pt = post_train(test_env, reset_mode=reset_mode, inf_print=False, render=False)
-        torch.cuda.synchronize()
+        if use_gpu:
+            torch.cuda.synchronize()
 
         self.lr_decay_epoch = lr_decay_epoch
         self.max_update_num = max_update_num

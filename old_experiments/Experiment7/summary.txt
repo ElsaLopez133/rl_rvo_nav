@@ -1,0 +1,53 @@
+We run their and us with one obstacle. static obstacle. Same radius as the robot. We use their configuration
+v = 0.5, obstacle is in [4,0].
+
+to run theirs:
+python policy_test_pre_train.py  --render --use_cpu --experiment 7 --trial 1 --world_name test_world_dyna_obs.yaml --dis_mode 0
+
+their yaml file:
+world:
+  world_height: 10
+  world_width: 15
+  offset_x: -5
+  offset_y: -5
+  step_time: 0.1
+
+robots:
+  robot_mode: 'diff'  # omni or diff
+  radius_list: [0.2, 0.2]  # first one is the default radius under other init_mode
+  vel_max: [0.5, 0.5]
+  radius_exp: 0.2
+  interval: 1 
+  square: [0, 0, 9, 9]
+  circular: [5, 5, 4]
+
+# obs_lines:
+#   number: 2
+
+obs_cirs:
+  number: 1
+  dist_mode: 0 
+  obs_model: 'static' # static, dynamic 
+  obs_step_mode: 'wander' # default, wander
+  obs_state_list: [[4, 0]]
+  obs_goal_list: [[0, 0]]
+  obs_radius_list: [0.2, 0.2]
+  obs_square: [2, 2, 8, 8]
+  obs_interval: 1
+  random_radius: False
+  vel_max: [0.3, 0.3]
+
+To run ours:
+python run_rvo_agent.py --reset --plot_traj --vmax 0.5 --step 0.1 --experiment 7 --trial 1 --wait --load_new
+
+
+NOTE: the code did not work for static obtsacles. In env_obs_cir.py, this had to be added (the elif. Oteriwse the rvo was not defined when calling the step_wander):
+
+        if self.obs_model == 'dynamic':
+            self.rvo = reciprocal_vel_obs(vxmax = 1.5, vymax = 1.5, **kwargs)
+        elif self.obs_model == 'static':
+            self.rvo = reciprocal_vel_obs(vxmax = 1.5, vymax = 1.5, **kwargs)
+
+
+
+

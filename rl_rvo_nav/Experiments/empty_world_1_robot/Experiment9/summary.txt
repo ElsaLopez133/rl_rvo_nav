@@ -1,0 +1,30 @@
+vmax_linear = 0.55
+vmax_angular = 0.55
+frequency = 10Hz
+step_time = 0.2
+
+Initial position: [0,0,0]
+Goal: [8,0]
+
+Their test_rowld.yaml:
+world:
+  world_height: 10
+  world_width: 15
+  offset_x: -5
+  offset_y: -5
+  step_time: 0.1
+
+robots:
+  robot_mode: 'diff'  # omni or diff
+  radius_list: [0.2, 0.2]  # first one is the default radius under other init_mode
+  vel_max: [0.55, 0.55] 
+  radius_exp: 0.2
+  interval: 1 
+  square: [0, 0, 9, 9]
+  circular: [5, 5, 4]
+
+Our parameters:
+python run_rvo_agent.py  --experiment 9 --trial 1 --nav 9 --trial_nav 1 --vmax_linear 0.55 --step 0.2 --vmax_angular 0.55 --load_new --plot_traj
+
+python policy_test_pre_train.py --render --experiment 9 --trial 1 --use_cpu --vmax_linear 0.55 --vmax_angular 0.55 --step 0.2  --show_traj
+

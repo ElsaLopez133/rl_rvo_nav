@@ -1,6 +1,8 @@
 world:
   world_height: 10
-  world_width: 10
+  world_width: 15
+  offset_x: -5
+  offset_y: -5
   step_time: 0.1
 
 robots:
@@ -16,13 +18,16 @@ robots:
 #   number: 2
 
 obs_cirs:
-  number: 5
-  dist_mode: 2
-  obs_model: 'dynamic' # static, dynamic 
+  number: 1
+  dist_mode: 0 #2,0
+  obs_model: 'static' # static, dynamic 
   obs_step_mode: 'wander' # default, wander
-  obs_state_list: [[25, 34], [35, 26]]
-  obs_goal_list: [[45, 24], [15, 36]]
-  obs_radius_list: [0.1, 0.1]
+  #obs_state_list: [[25, 34], [35, 26]]
+  obs_state_list: [[4, 0]]
+  #obs_goal_list: [[45, 24], [15, 36]]
+  obs_goal_list: [[0, 0]]
+  #obs_radius_list: [0.1, 0.1]
+  obs_radius_list: [0.2, 0.2]
   obs_square: [2, 2, 8, 8]
   obs_interval: 1
   random_radius: False
