@@ -5,12 +5,13 @@ world:
 
 robots:
   robot_mode: 'diff'  # omni or diff
-  radius_list: [0.34, 0.34]  # first one is the default radius under other init_mode
-  vel_max: [0.65, 0.65]
-  radius_exp: 0.2
+  radius_list: [0.26, 0.26]  # first one is the default radius under other init_mode
+  vel_max: [0.5, 0.5]
+  radius_exp: 0.14
   interval: 1 
   square: [0, 0, 10, 10]
   circular: [5, 5, 4]
 
 # obs_lines:
 #   number: 2
+

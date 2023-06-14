@@ -1,5 +1,6 @@
 import os
 import sys
+import yaml
 import gym
 import pickle
 import shutil
@@ -77,7 +78,7 @@ par_train.add_argument('--figure_save_path', default='figure')
 par_train.add_argument('--save_path', default=str(cur_path / 'model_save') + '/')
 par_train.add_argument('--save_name', default= 'r')
 par_train.add_argument('--load_path', default=str(cur_path / 'model_save')+ '/')
-par_train.add_argument('--load_name', default='r4_0/r4_0_check_point_250.pt') # '/r4_0/r4_0_check_point_250.pt' 
+par_train.add_argument('--load_name', default='r4_6/r4_6_check_point_250.pt') # '/r4_0/r4_0_check_point_250.pt' 
 par_train.add_argument('--save_result', type=bool, default=True)
 par_train.add_argument('--lr_decay_epoch', type=int, default=1000)
 par_train.add_argument('--max_update_num', type=int, default=10)
@@ -89,6 +90,10 @@ model_path_check = args.save_path + args.save_name + str(args.robot_number) + '_
 model_name_check = args.save_name + str(args.robot_number) +  '_{}'
 while os.path.isdir(model_path_check.format(counter)):
     counter+=1
+
+with open(args.world_path, 'r') as stream:
+    data_loaded = yaml.safe_load(stream)
+    print(data_loaded)
 
 model_abs_path = model_path_check.format(counter) + '/'
 model_name = model_name_check.format(counter)

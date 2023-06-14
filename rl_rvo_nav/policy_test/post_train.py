@@ -33,8 +33,9 @@ class post_train:
         self.nm = neighbor_num
         self.args = args
 
-    def policy_test(self, policy_type='drl', policy_path=None, policy_name='policy', result_path=None, result_name='/result.txt', figure_save_path=None, ani_save_path=None, policy_dict=False, once=False, experiment = 1 , trial = 1, vmax_linear = 1.5, vmax_angular = 1.5, step = 0.1):
+    def policy_test(self, policy_type='drl', policy_path=None, policy_name='policy', result_path=None, result_name='/result.txt', figure_save_path=None, ani_save_path=None, policy_dict=False, once=False, vmax_linear = 1.5, vmax_angular = 1.5, step = 0.1):
         
+        print('MAX SPEED {0}'.format(vmax_angular))
         if policy_type == 'drl':
             model_action = self.load_policy(policy_path, self.std_factor, policy_dict=policy_dict)
 
@@ -45,14 +46,20 @@ class post_train:
         number_actions = 0
         total_time = 0
         
-        print('Policy Test Start !')        
-        while n < self.num_episodes:
-            file_name = (str(pwd.getpwuid(os.getuid()).pw_dir),'/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/',self.exp_name,'/episode_',str(n),'_step_',str(step).replace(".","-"),'_vmax_linear',str(vmax_linear).replace(".","-"),'_vmax_angular',str(vmax_angular).replace(".","-"),'_trial',str(trial),'.csv')
-            file_name_csv = "".join(file_name)
-
-            # We create a data frame to store the values
-            df= pd.DataFrame(columns = ['robot_id','action_x','action_y','a_inc_x', 'a_inc_y','cur_vel_x', 'cur_vel_y', 'des_vel_x', 'des_vel_y', 'ori_goal', 'raidus', 'robot_pose_x', 'robot_pose_y', 'robot_ori','time_action','time_step'])
+        print('Policy Test Start !')  
+        # We create a data frame to store the values 
+        file_name = (str(pwd.getpwuid(os.getuid()).pw_dir),'/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/',self.exp_name,'/episode_',str(n),'_step_',str(step).replace(".","-"),'_vmax_linear',str(vmax_linear).replace(".","-"),'_vmax_angular',str(vmax_angular).replace(".","-"),'.csv')
+        file_name_csv = "".join(file_name)
+        df= pd.DataFrame(columns = ['robot_id','action_x','action_y','a_inc_x', 'a_inc_y','cur_vel_x', 'cur_vel_y', 'des_vel_x', 'des_vel_y', 'ori_goal', 'raidus', 'robot_pose_x', 'robot_pose_y', 'robot_ori','time_action','time_step'])
         
+        # File to store time delay values
+        file_name_time_delay_csv = (str(pwd.getpwuid(os.getuid()).pw_dir),'/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/',self.exp_name,'/time_delay_episode_',str(n),'_step_',str(step).replace(".","-"),'_vmax_linear',str(vmax_linear).replace(".","-"),'_vmax_angular',str(vmax_angular).replace(".","-"),'.csv')
+        file_name_time_delay_csv = "".join(file_name_time_delay_csv)
+        df_time_delay = pd.DataFrame(columns = ['robot_id','cmd_vel_omni_x','cmd_vel_omni_y','cmd_vel_linear_x','cmd_vel_angular_z','cur_vel_x_init','cur_vel_y_init','cur_vel_linear_x_init','cur_vel_angular_z_init','time_stamp_init', 'cur_vel_x_final','cur_vel_y_final','cur_vel_linear_x_final','cur_vel_angular_z_final','time_stamp_final'])
+
+        init_time = time.time()
+        while n < self.num_episodes:
+
             figure_id = 0
 
             abs_action = np.array([[0],[0]])
@@ -85,11 +92,20 @@ class post_train:
                     number_actions += 1
 
                     cur_vel = self.env.ir_gym.robot_list[i].vel_omni
+                    cur_vel_diff = self.env.ir_gym.robot_list[i].vel_diff
+                    cur_vel_omni = cur_vel
+
                     abs_action = self.acceler_vel * a_inc + np.squeeze(cur_vel)
+                    #print(np.array([[abs_action[0]], [abs_action[1]]]))
+                    cmd_vel_diff = self.env.ir_gym.robot_list[i].omni2diff(np.array(abs_action, ndmin=2).T )
+
                     abs_action_list.append(abs_action)
                     a_inc_list.append(a_inc)
+
                     #print('abs_action:{0}'.format(abs_action))
                     
+                    row_delay = [i,abs_action[0], abs_action[1],cmd_vel_diff[0,0],cmd_vel_diff[1,0], cur_vel_omni[0,0],cur_vel_omni[1,0], cur_vel_diff[0,0], cur_vel_diff[1,0],time.time()-init_time]
+
                     row = [i,abs_action[0],abs_action[1],a_inc[0], a_inc[1],o[i][0],o[i][1],o[i][2],o[i][3],np.round(self.env.ir_gym.robot_list[i].radian_goal,2),o[i][5],np.round(np.squeeze(self.env.ir_gym.robot_list[i].state[0]),2),
                           np.round(np.squeeze(self.env.ir_gym.robot_list[i].state[1]),2),np.round(np.squeeze(self.env.ir_gym.robot_list[i].state[2]),2),temp,self.step_time]
                     df.loc[len(df)] = row
@@ -100,7 +116,15 @@ class post_train:
             #print('a_inc:{0}  abs_action:{1}  cur_vel:{2} '.format(a_inc, abs_action, np.squeeze(cur_vel)))
             o, r, d, info = self.env.step_ir(abs_action_list, vel_type = 'omni')
             #print('AFTER STEP')
-            cur_vel = self.env.ir_gym.robot_list[i].vel_omni
+            for i in range(self.robot_number):
+                cur_vel = self.env.ir_gym.robot_list[i].vel_omni
+                cur_vel_omni = cur_vel
+                cur_vel_diff = self.env.ir_gym.robot_list[i].vel_diff
+                row_delay = row_delay + [cur_vel_omni[0,0], cur_vel_omni[1,0], cur_vel_diff[0,0], cur_vel_diff[1,0], time.time() - init_time]
+            
+            df_time_delay.loc[len(df_time_delay)] = row_delay
+            df_time_delay.to_csv(file_name_time_delay_csv, index=False)
+
             #print('a_inc:{0}  abs_action:{1}  cur_vel:{2} '.format(a_inc, abs_action, np.squeeze(cur_vel)))
 
             robot_speed_list = [np.linalg.norm(robot.vel_omni) for robot in self.env.ir_gym.robot_list]
