@@ -10,9 +10,11 @@ world:
 robots:
   robot_mode: 'diff'  # omni or diff
   
-  radius_list: [0.2]  # first one is the default radius under other init_mode
-  #radius_list: [0.2,0.25,0.3, 0.35,0.4,0.45,0.5,0.55,0.6, 0.65, 0.7, 0.75] 
-  vel_max: [1.5, 1.5] 
+  #radius_list: [0.2]  # first one is the default radius under other init_mode
+  radius_list: [0.2, 0.25, 0.3, 0.35 ,0.4,0.45,0.5,0.55,0.6, 0.65, 0.7, 0.75] 
+  neighbors_region_list: [4] #[1,2,3]
+  vmax_list: [1.5] #[0.5,0.55,0.6,0.65,0.75,1.0,1.5]
+  #vel_max: [1.5, 1.5] 
   radius_exp: 0.2
   interval: 1 
   square: [0, 0, 9, 9]

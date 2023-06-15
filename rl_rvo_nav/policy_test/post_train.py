@@ -49,8 +49,8 @@ class post_train:
         file_name = (str(pwd.getpwuid(os.getuid()).pw_dir),'/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/',self.exp_name,'/episode_',str(n),'_step_',str(step).replace(".","-"),'_vmax_linear',str(vmax_linear).replace(".","-"),'_vmax_angular',str(vmax_angular).replace(".","-"),'.csv')
         file_name_csv = "".join(file_name)
 
-        file_name_time_delay = (str(pwd.getpwuid(os.getuid()).pw_dir),'/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/',self.exp_name,'/time_delay_episode_',str(n),'_step_',str(step).replace(".","-"),'_vmax_linear',str(vmax_linear).replace(".","-"),'_vmax_angular',str(vmax_angular).replace(".","-"),'.csv')
-        file_name_time_delay_csv = "".join(file_name_time_delay)
+        #file_name_time_delay = (str(pwd.getpwuid(os.getuid()).pw_dir),'/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/',self.exp_name,'/time_delay_episode_',str(n),'_step_',str(step).replace(".","-"),'_vmax_linear',str(vmax_linear).replace(".","-"),'_vmax_angular',str(vmax_angular).replace(".","-"),'.csv')
+        #file_name_time_delay_csv = "".join(file_name_time_delay)
 
         # We create a data frame to store the values
         df= pd.DataFrame(columns = ['robot_id','action_x','action_y','a_inc_x', 'a_inc_y','cur_vel_x', 'cur_vel_y', 'des_vel_x', 'des_vel_y', 'ori_goal', 'raidus', 'robot_pose_x', 'robot_pose_y', 'robot_ori','time_action','time_step'])
@@ -103,7 +103,7 @@ class post_train:
                     df.loc[len(df)] = row
                     df.to_csv(file_name_csv, index=False)
 
-                    row_delay = [i,abs_action[0], abs_action[1],abs_action_diff[0,0],abs_action_diff[1,0], cur_vel[0][0],cur_vel[1][0], cur_vel_diff[0][0], cur_vel_diff[1][0],time.time()-init_time]
+                    #row_delay = [i,abs_action[0], abs_action[1],abs_action_diff[0,0],abs_action_diff[1,0], cur_vel[0][0],cur_vel[1][0], cur_vel_diff[0][0], cur_vel_diff[1][0],time.time()-init_time]
 
             #print('BEFORE STEP')
             #print('a_inc:{0}  abs_action:{1}  cur_vel:{2} '.format(a_inc, abs_action, np.squeeze(cur_vel)))
@@ -112,9 +112,9 @@ class post_train:
             #print('AFTER STEP')
             cur_vel = self.env.ir_gym.robot_list[0].vel_omni
             cur_vel_diff = self.env.ir_gym.robot_list[0].vel_diff
-            row_delay = row_delay + [cur_vel[0][0],cur_vel[1][0],cur_vel_diff[0][0],cur_vel_diff[1][0],time.time()-init_time]
-            df_time_delay.loc[len(df_time_delay)] = row_delay
-            df_time_delay.to_csv(file_name_time_delay_csv, index=False)
+            #row_delay = row_delay + [cur_vel[0][0],cur_vel[1][0],cur_vel_diff[0][0],cur_vel_diff[1][0],time.time()-init_time]
+            #df_time_delay.loc[len(df_time_delay)] = row_delay
+            #df_time_delay.to_csv(file_name_time_delay_csv, index=False)
 
             #print('a_inc:{0}  abs_action:{1}  cur_vel:{2} '.format(a_inc, abs_action, np.squeeze(cur_vel)))
 
