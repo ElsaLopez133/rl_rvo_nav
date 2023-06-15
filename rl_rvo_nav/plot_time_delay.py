@@ -7,8 +7,9 @@ import matplotlib.gridspec as gridspec
 
 
 df = pd.read_csv('/home/rosfr/catkin_ws/src/kale_bot/external/rl_rvo_nav/rl_rvo_nav/Experiments/rl_rvo_1_dis0_nr3_debug/time_delay_episode_0_step_0-1_vmax_linear1-5_vmax_angular1-5.csv')
+df['time_stamp_final'] = df['time_stamp_final'] - df['time_stamp_init'][0]
 df['time_stamp_init'] = df['time_stamp_init'] - df['time_stamp_init'][0]
-df['time_stamp_final'] = df['time_stamp_final'] - df['time_stamp_final'][0]
+
 
 df_zoomed = df[:10]
 

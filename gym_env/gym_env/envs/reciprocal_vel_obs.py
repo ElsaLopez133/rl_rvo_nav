@@ -16,6 +16,7 @@ class reciprocal_vel_obs:
         self.vymax = vymax
         self.acceler = acceler
         self.nr = neighbor_region
+        print('nr: {0}'.format(self.nr))
 
     def cal_vel(self, robot_state, nei_state_list=[], obs_cir_list=[], obs_line_list=[], mode = 'rvo'):
         
