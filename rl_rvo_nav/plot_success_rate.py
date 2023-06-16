@@ -7,8 +7,8 @@ import matplotlib.gridspec as gridspec
 
 
 df = pd.DataFrame(columns = ['radius', 'sr'])
-radius = [0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55]
-sr = [100,100,100,100,100,5,0,0]
+radius = [0.2,0.25,0.3,0.35,0.4, 0.41, 0.42, 0.43, 0.44,0.45,0.5,0.55]
+sr = [100,100,100,100,100,100,100,0,35,5,0,0]
 df['radius'] = radius
 df['sr'] = sr
 
