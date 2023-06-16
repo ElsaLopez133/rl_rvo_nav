@@ -90,6 +90,10 @@ model_name_check = args.save_name + str(args.robot_number) +  '_{}'
 while os.path.isdir(model_path_check.format(counter)):
     counter+=1
 
+with open(args.world_path, 'r') as stream:
+    data_loaded = yaml.safe_load(stream)
+    print(data_loaded)
+    
 model_abs_path = model_path_check.format(counter) + '/'
 model_name = model_name_check.format(counter)
 

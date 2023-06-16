@@ -52,3 +52,14 @@ policy_name: rl_rvo_10_dis3_episodes10_radius0.2  successful rate: 100.00% avera
 policy_name: rl_rvo_10_dis3_episodes10_radius0.25  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.34 std speed 0.01
 policy_name: rl_rvo_10_dis3_episodes10_radius0.3  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.34 std speed 0.01
 policy_name: rl_rvo_10_dis3_episodes10_radius0.35  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.34 std speed 0.01
+
+SUCCESS RATE 10 ROBOTS INCREASING RADIUS
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.2  successful rate: 100.00% average EpLen: 83.1 std length 0.3 average speed: 1.07 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.25  successful rate: 100.00% average EpLen: 90.0 std length 0.0 average speed: 0.99 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.3  successful rate: 100.00% average EpLen: 94.0 std length 0.0 average speed: 0.96 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.35  successful rate: 100.00% average EpLen: 95.0 std length 0.0 average speed: 0.95 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.5  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.85 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.45  successful rate: 5.00% average EpLen: 113.0 std length 0.0 average speed: 0.8 std speed 0.01
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.55  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.8 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.4  successful rate: 100.00% average EpLen: 99.0 std length 0.0 average speed: 0.92 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.43  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.79 std speed 0.0

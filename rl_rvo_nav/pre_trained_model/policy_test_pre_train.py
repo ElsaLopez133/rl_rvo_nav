@@ -53,10 +53,12 @@ with open(policy_args.world_name, 'r') as stream:
 
 for j in range(len(neighbors_region_list)):
     print('Running experiment with nr {0}'.format(neighbors_region_list[j]))
+    print('Running experiment with radius {0}'.format(radius_list[j]))
     args.neighbors_region = neighbors_region_list[j]
     vmax_linear = vel_max[0]
     vmax_angular = vel_max[1] 
     radius = radius_list[0]
+    print('Running experiment with speed {0}'.format(vel_max))
 
     if policy_args.policy_type == 'drl':
         # fname_model = save_path_string +'_check_point_250.pt'
@@ -65,7 +67,7 @@ for j in range(len(neighbors_region_list)):
     if policy_args.world_name == 'test_world_dyna_obs.yaml':
         policy_name = policy_name + '_static_obstacle'
 
-    exp_name = policy_name + '_' + str(policy_args.robot_number) + '_dis' + str(policy_args.dis_mode)  + '_nr' + str(args.neighbors_region) + '_debug' #+ '_radius' + str(radius).replace('.','-') #+ '_episodes' + str(policy_args.num_episodes)
+    exp_name = policy_name + '_' + str(policy_args.robot_number) + '_dis' + str(policy_args.dis_mode)  + '_nr' + str(args.neighbors_region) + '_v' + str(vmax_linear) #+ '_radius' + str(radius).replace('.','-') #+ '_episodes' + str(policy_args.num_episodes)
     policy_name = exp_name
 
     if policy_args.world_name == 'test_world_sr.yaml':
