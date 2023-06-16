@@ -9,6 +9,7 @@ from torch import nn
 from pathlib import Path
 from rl_rvo_nav.policy_train.multi_ppo import multi_ppo
 from rl_rvo_nav.policy.policy_rnn_ac import rnn_ac
+import yaml
 
 # path set
 cur_path = Path(__file__).parent
@@ -77,7 +78,7 @@ par_train.add_argument('--figure_save_path', default='figure')
 par_train.add_argument('--save_path', default=str(cur_path / 'model_save') + '/')
 par_train.add_argument('--save_name', default= 'r')
 par_train.add_argument('--load_path', default=str(cur_path / 'model_save')+ '/')
-par_train.add_argument('--load_name', default='r4_0/r4_0_check_point_250.pt') # '/r4_0/r4_0_check_point_250.pt' 
+par_train.add_argument('--load_name', default='r4_6/r4_6_check_point_250.pt') # '/r4_0/r4_0_check_point_250.pt' 
 par_train.add_argument('--save_result', type=bool, default=True)
 par_train.add_argument('--lr_decay_epoch', type=int, default=1000)
 par_train.add_argument('--max_update_num', type=int, default=10)

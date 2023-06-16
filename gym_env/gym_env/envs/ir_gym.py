@@ -4,8 +4,6 @@ from gym import spaces
 from gym_env.envs.rvo_inter import rvo_inter
 import numpy as np
 
-#We change vmax and vmin from 1.5 to 0.5
-
 class ir_gym(env_base):
     def __init__(self, abs_action,a_inc, world_name, neighbors_region=5, neighbors_num=10, vxmax = 1.5, vymax = 1.5, env_train=True, acceler = 0.5, **kwargs):
         super(ir_gym, self).__init__(abs_action,a_inc,world_name=world_name, **kwargs)
