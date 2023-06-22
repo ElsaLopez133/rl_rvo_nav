@@ -58,13 +58,46 @@ policy_name: rl_rvo_10_dis3_nr4_debug_r0.2  successful rate: 100.00% average EpL
 policy_name: rl_rvo_10_dis3_nr4_debug_r0.25  successful rate: 100.00% average EpLen: 90.0 std length 0.0 average speed: 0.99 std speed 0.0
 policy_name: rl_rvo_10_dis3_nr4_debug_r0.3  successful rate: 100.00% average EpLen: 94.0 std length 0.0 average speed: 0.96 std speed 0.0
 policy_name: rl_rvo_10_dis3_nr4_debug_r0.35  successful rate: 100.00% average EpLen: 95.0 std length 0.0 average speed: 0.95 std speed 0.0
-policy_name: rl_rvo_10_dis3_nr4_debug_r0.5  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.85 std speed 0.0
-policy_name: rl_rvo_10_dis3_nr4_debug_r0.45  successful rate: 5.00% average EpLen: 113.0 std length 0.0 average speed: 0.8 std speed 0.01
-policy_name: rl_rvo_10_dis3_nr4_debug_r0.55  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.8 std speed 0.0
 policy_name: rl_rvo_10_dis3_nr4_debug_r0.4  successful rate: 100.00% average EpLen: 99.0 std length 0.0 average speed: 0.92 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.41  successful rate: 100.00% average EpLen: 101.35 std length 7.51 average speed: 0.92 std speed 0.06
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.42  successful rate: 100.00% average EpLen: 107.0 std length 0.0 average speed: 0.87 std speed 0.0
 policy_name: rl_rvo_10_dis3_nr4_debug_r0.43  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.79 std speed 0.0
 policy_name: rl_rvo_10_dis3_nr4_debug_r0.44  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.87 std speed 0.0
 policy_name: rl_rvo_10_dis3_nr4_debug_r0.45  successful rate: 35.00% average EpLen: 113.0 std length 0.0 average speed: 0.81 std speed 0.03
-policy_name: rl_rvo_10_dis3_nr4_debug_r0.41  successful rate: 100.00% average EpLen: 101.35 std length 7.51 average speed: 0.92 std speed 0.06
-policy_name: rl_rvo_10_dis3_nr4_debug_r0.42  successful rate: 100.00% average EpLen: 107.0 std length 0.0 average speed: 0.87 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.45  successful rate: 5.00% average EpLen: 113.0 std length 0.0 average speed: 0.8 std speed 0.01
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.5  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.85 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_debug_r0.55  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.8 std speed 0.0
 
+SUCCESS RATE V05 INCREASE NROBOTS
+policy_name: rl_rvo_5_dis3_nr4_v0.5_r0.2  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.29 std speed 0.0
+policy_name: rl_rvo_10_dis3_nr4_v0.5_r0.2  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.34 std speed 0.01
+policy_name: rl_rvo_12_dis3_nr4_v0.5_r0.2  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.33 std speed 0.01
+policy_name: rl_rvo_15_dis3_nr4_v0.5_r0.2  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.35 std speed 0.01
+policy_name: rl_rvo_18_dis3_nr4_v0.5_r0.2  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.35 std speed 0.0
+policy_name: rl_rvo_20_dis3_nr4_v0.5_r0.2  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.35 std speed 0.01
+
+
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.5_va1.5  successful rate: 100.00% average EpLen: 173.0 std length 0.0 average speed: 0.5 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.55_va1.5  successful rate: 100.00% average EpLen: 158.0 std length 0.0 average speed: 0.54 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.6_va1.5  successful rate: 100.00% average EpLen: 145.0 std length 0.0 average speed: 0.59 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.65_va1.5  successful rate: 100.00% average EpLen: 133.0 std length 0.0 average speed: 0.64 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.75_va1.5  successful rate: 100.00% average EpLen: 116.0 std length 0.0 average speed: 0.73 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.75_va1  successful rate: 100.00% average EpLen: 113.0 std length 0.0 average speed: 0.77 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.65_va1  successful rate: 100.00% average EpLen: 130.0 std length 0.0 average speed: 0.67 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.55_va1  successful rate: 100.00% average EpLen: 149.0 std length 0.0 average speed: 0.59 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.5_va1  successful rate: 100.00% average EpLen: 164.0 std length 0.0 average speed: 0.54 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.5_va1.5  successful rate: 100.00% average EpLen: 257.0 std length 0.0 average speed: 0.36 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.55_va1.5  successful rate: 100.00% average EpLen: 222.0 std length 0.0 average speed: 0.4 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.5_va1  successful rate: 100.00% average EpLen: 164.0 std length 0.0 average speed: 0.54 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.75_va1  successful rate: 100.00% average EpLen: 131.0 std length 0.0 average speed: 0.64 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.65_va1.5  successful rate: 100.00% average EpLen: 170.0 std length 0.0 average speed: 0.5 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.6_va1.5  successful rate: 100.00% average EpLen: 194.0 std length 0.0 average speed: 0.44 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.5_va1  successful rate: 100.00% average EpLen: 164.0 std length 0.0 average speed: 0.54 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.55_va1  successful rate: 100.00% average EpLen: 217.0 std length 0.0 average speed: 0.41 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.6_va1  successful rate: 100.00% average EpLen: 189.0 std length 0.0 average speed: 0.46 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.75_va1  successful rate: 100.00% average EpLen: 131.0 std length 0.0 average speed: 0.64 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.65_va1  successful rate: 100.00% average EpLen: 164.0 std length 0.0 average speed: 0.52 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.5_va1  successful rate: 100.00% average EpLen: 254.0 std length 0.0 average speed: 0.37 std speed 0.0
+policy_name: rl_rvo_static_obstacle_1_dis0_nr4_vl0.6_va1  successful rate: 100.00% average EpLen: 138.0 std length 0.0 average speed: 0.63 std speed 0.0
+policy_name: rl_rvo_2_dis0_nr4_vl0.75_va1.5  successful rate: 100.00% average EpLen: 134.0 std length 0.0 average speed: 0.62 std speed 0.0
+policy_name: rl_rvo_5_dis3_nr4_vl0.5_va0.5  successful rate: 0.00% average EpLen: 0 std length 0 average speed: 0.29 std speed 0.0

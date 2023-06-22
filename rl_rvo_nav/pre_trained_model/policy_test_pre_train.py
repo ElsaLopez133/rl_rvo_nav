@@ -14,7 +14,7 @@ parser.add_argument('--policy_type', default='drl')
 parser.add_argument('--model_path', default='pre_trained')
 parser.add_argument('--model_name', default='pre_train_check_point_1000.pt')
 parser.add_argument('--arg_name', default='pre_train')
-parser.add_argument('--world_name', default='test_world_sr.yaml')  # test_world_lines.yaml; test_world_dyna_obs.yaml
+parser.add_argument('--world_name', default='test_world.yaml')  # test_world_lines.yaml; test_world_dyna_obs.yaml
 parser.add_argument('--render', action='store_true')
 parser.add_argument('--robot_number', type=int, default='10')
 parser.add_argument('--num_episodes', type=int, default='20')
@@ -67,7 +67,7 @@ for j in range(len(neighbors_region_list)):
     if policy_args.world_name == 'test_world_dyna_obs.yaml':
         policy_name = policy_name + '_static_obstacle'
 
-    exp_name = policy_name + '_' + str(policy_args.robot_number) + '_dis' + str(policy_args.dis_mode)  + '_nr' + str(args.neighbors_region) + '_v' + str(vmax_linear) #+ '_radius' + str(radius).replace('.','-') #+ '_episodes' + str(policy_args.num_episodes)
+    exp_name = policy_name + '_' + str(policy_args.robot_number) + '_dis' + str(policy_args.dis_mode)  + '_nr' + str(args.neighbors_region) + '_vl' + str(vmax_linear) + '_va' + str(vmax_angular) + '_sr' #+ '_radius' + str(radius).replace('.','-') #+ '_episodes' + str(policy_args.num_episodes)
     policy_name = exp_name
 
     if policy_args.world_name == 'test_world_sr.yaml':
